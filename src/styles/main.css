@@ -81,7 +81,8 @@ header nav button:hover{border-color:var(--ac);color:var(--fg)}
 #stage{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(circle at center, rgba(140,203,255,0.05) 0%, transparent 65%)}
 #ring{position:relative;width:min(92vw,680px);height:min(78vh,560px)}
 @media (max-width: 640px) {
-  #ring{width:80vw;height:65vh}
+  #ring{width:min(88vw,65vh);height:min(88vw,65vh)}
+  header > div:last-child{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:flex-end}
 }
 .nd{position:absolute;transform:translate(-50%,-50%);padding:.5rem .7rem;text-align:center}
 .nd::before{content:"◇";display:block;color:var(--ac);font-size:.8rem;transition:transform .3s}
