@@ -27,6 +27,14 @@ a{color:var(--ac)}
 
 /* ── BOOT ────────────────────────────────────────────────────────────── */
 #boot{position:fixed;inset:0;z-index:50;background:#000;display:grid;place-items:center;text-align:center;transition:opacity 1.2s;overflow:hidden}
+#hidden-term{position:absolute;left:1.5rem;bottom:1.5rem;font:400 10px/1.5 "IBM Plex Mono",monospace;color:rgba(255,255,255,0.4);text-align:left;letter-spacing:0.1em;z-index:60;pointer-events:none;transition:opacity 0.5s}
+.ht-title{color:var(--ac);margin-bottom:0.1em;letter-spacing:0.15em}
+.ht-line{color:rgba(140,203,255,0.2);margin-bottom:0.5em;letter-spacing:-0.1em}
+.ht-row{display:flex;gap:1.5rem}
+.ht-row span:first-child{width:5em}
+.ht-val{color:rgba(255,255,255,0.7)}
+.ht-gap{height:1em}
+.ht-blink{animation:blink 1s step-end infinite}
 #cine-sys{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0;letter-spacing:.2em;color:var(--dim);transition:opacity 0.5s}
 #cine-name{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);

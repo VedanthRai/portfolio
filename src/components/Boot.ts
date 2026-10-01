@@ -53,6 +53,8 @@ export function runBoot(onDone: () => void): void {
   const playCinematic = () => {
     sys.style.opacity = '0';
     enter.style.display = 'none';
+    const ht = document.getElementById('hidden-term');
+    if (ht) ht.style.opacity = '0';
     
     // Quick blue line sweep (0 to 0.35s)
     at(() => { line.className = 'draw'; }, 10);
@@ -97,8 +99,30 @@ export function runBoot(onDone: () => void): void {
         }).catch(() => {
            // Autoplay blocked
            enter.style.display = 'block';
+           
+           const statusEl = document.getElementById('ht-status');
+           const enterBtn = document.getElementById('enter-btn');
+           if (statusEl && enterBtn) {
+             at(() => statusEl.textContent = 'detecting visitor...', 1000);
+             at(() => statusEl.textContent = 'interface ready', 3000);
+             at(() => statusEl.textContent = 'awaiting input', 5000);
+
+             enterBtn.addEventListener('mouseenter', () => {
+               statusEl.textContent = 'ACCESS REQUESTED';
+               statusEl.style.color = 'var(--ac)';
+               enterBtn.textContent = 'INITIALIZE';
+             });
+             enterBtn.addEventListener('mouseleave', () => {
+               statusEl.textContent = 'awaiting input';
+               statusEl.style.color = '';
+               enterBtn.textContent = 'ENTER VEDANTH.OS';
+             });
+           }
+
            $('#enter-btn').onclick = () => {
               enter.style.display = 'none';
+              const ht = document.getElementById('hidden-term');
+              if (ht) ht.style.opacity = '0';
               if (audio) audio.play();
               playCinematic();
            };
