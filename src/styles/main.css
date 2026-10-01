@@ -56,7 +56,12 @@ a{color:var(--ac)}
   opacity:0;transition:opacity 1s;pointer-events:none;
 }
 #cine-bg.on{opacity:1;}
-#skip{position:absolute;right:1.2rem;top:calc(1.2rem + env(safe-area-inset-top,0));padding:.5rem .8rem;border:1px solid var(--line)}
+#skip{position:absolute;right:1rem;top:calc(1rem + env(safe-area-inset-top,0));padding:.5rem;font:400 10px/1.5 "IBM Plex Mono",monospace;letter-spacing:.15em;color:rgba(255,255,255,0.4);transition:color 0.3s;z-index:60;text-transform:uppercase}
+#skip:hover{color:rgba(255,255,255,0.9)}
+#cine-enter{position:absolute;top:62%;left:50%;transform:translate(-50%,-50%);z-index:60;width:100%;text-align:center}
+#enter-btn{padding:1.2rem 3rem;font:300 clamp(1.1rem,4vw,1.5rem) Sora,sans-serif;letter-spacing:.25em;color:#fff;background:rgba(140,203,255,0.08);border:1px solid rgba(140,203,255,0.3);box-shadow:0 0 30px rgba(140,203,255,0.15),inset 0 0 15px rgba(140,203,255,0.05);transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1);animation:pulse-glow 2.5s infinite alternate}
+#enter-btn:hover{background:rgba(140,203,255,0.15);border-color:var(--ac);box-shadow:0 0 40px rgba(140,203,255,0.3),inset 0 0 25px rgba(140,203,255,0.1);transform:scale(1.03)}
+@keyframes pulse-glow{0%{box-shadow:0 0 20px rgba(140,203,255,0.1);border-color:rgba(140,203,255,0.25)}100%{box-shadow:0 0 40px rgba(140,203,255,0.4);border-color:rgba(140,203,255,0.6)}}
 #cine-line{position:absolute;top:50%;left:0;height:2px;background:var(--ac);width:0;transition:width 0.35s cubic-bezier(0.8,0,0.2,1);transform:translateY(-50%);z-index:51}
 #cine-line.draw{width:100%}
 #cine-line.fade{opacity:0;transition:opacity 0.2s}
