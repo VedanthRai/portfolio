@@ -83,8 +83,7 @@ export function runBoot(onDone: () => void): void {
     
     at(finish, 3800);
   };
-
-  sys.textContent = 'SYSTEM INITIALIZING...';
+  sys.textContent = '';
   sys.style.opacity = '1';
 
   if (!sound.enabled) {
