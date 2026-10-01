@@ -9,14 +9,15 @@ export function triggerWormhole() {
 
 let jumpPhase = 0;
 let jumpTimer = 0;
-export let targetZ = 4.6;
+const getBaseZ = () => innerWidth < 640 ? 6.8 : 4.6;
+export let targetZ = getBaseZ();
 export function triggerProjectJump() {
   jumpPhase = 1;
   jumpTimer = 0;
-  targetZ = 4.6;
+  targetZ = getBaseZ();
 }
 export function resetZoom() {
-  targetZ = 4.6;
+  targetZ = getBaseZ();
 }
 let scanTimer = 0;
 export function triggerSystemScan() {
@@ -39,10 +40,12 @@ export function initCore(canvas: HTMLCanvasElement): void {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2.5));
   const scene = new Scene();
   const camera = new PerspectiveCamera(46, 1, 0.1, 100);
-  camera.position.z = 4.6;  // Closer = more 3D presence and less depth-flatness
+  camera.position.z = getBaseZ();  // Closer = more 3D presence and less depth-flatness
   const resize = () => {
     renderer.setSize(innerWidth, innerHeight, false);
     camera.aspect = innerWidth / innerHeight;
+    const base = getBaseZ();
+    if (targetZ < base) targetZ = base;
     camera.updateProjectionMatrix();
   };
   resize();
@@ -223,7 +226,7 @@ export function initCore(canvas: HTMLCanvasElement): void {
     if (!document.body.classList.contains('rec') && !document.body.classList.contains('ov-open')) {
       // Allow bidirectional zooming in/out
       targetZ += e.deltaY * 0.015;
-      targetZ = Math.max(4.6, Math.min(targetZ, 35)); // max zoom out is 35
+      targetZ = Math.max(getBaseZ(), Math.min(targetZ, 35)); // max zoom out is 35
     }
   }, { passive: true });
   
