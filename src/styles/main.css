@@ -87,6 +87,31 @@ header nav button:hover{border-color:var(--ac);color:var(--fg)}
 #who{position:fixed;left:1.2rem;bottom:calc(1.2rem + env(safe-area-inset-bottom,0));z-index:4;max-width:26rem}
 #who h2{font-weight:200;font-size:clamp(1.6rem,4vw,2.6rem);margin:0;letter-spacing:.06em}
 
+/* Mobile Composition Overrides */
+@media (max-width: 640px) {
+  header {
+    padding: calc(0.8rem + env(safe-area-inset-top, 0)) 1rem 0;
+    gap: 0.5rem;
+  }
+  header > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  header button, .nd span, #who h2 {
+    font-size: 10px;
+  }
+  #who {
+    bottom: calc(5rem + env(safe-area-inset-bottom, 0)); /* Lift above DRACO */
+    left: 1rem;
+  }
+  #ring {
+    width: 82vw; /* Prevent side nodes from touching edges */
+    height: 72vh; /* Spread vertical nodes */
+  }
+}
+
 /* ── OVERLAY ─────────────────────────────────────────────────────────── */
 .ov{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.975);overflow:auto;padding:calc(4.5rem + env(safe-area-inset-top,0)) 1.2rem 5rem;display:none}
 .ov.on{display:block}

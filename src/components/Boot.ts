@@ -54,41 +54,46 @@ export function runBoot(onDone: () => void): void {
     sys.style.opacity = '0';
     enter.style.display = 'none';
     
-    // Quick blue line sweep (0 to 0.35s)
-    at(() => { line.className = 'draw'; }, 10);
-    at(() => { line.className = 'draw fade'; }, 360);
+    // BLACK / DARK VOID (0.0s)
+    at(() => {
+      sys.textContent = 'SIGNAL DETECTED';
+      sys.style.opacity = '1';
+    }, 10);
     
-    // Sync to analyzed peaks:
-    // 0.40s: VEDANTH (Major impact)
-    // 1.10s: RAI (Secondary buildup)
-    // 2.10s: VEDANTH.OS (Final lock)
-    // 4.00s: Sequence ends
-    
+    // V/CORE AWAKENING (0.40s - Peak 1)
     at(() => { 
-      name.textContent = 'VEDANTH'; 
-      name.className = 'show';
+      sys.textContent = 'V/CORE AWAKENING';
+      line.className = 'draw'; 
     }, 400); 
     
+    // IDENTITY VERIFIED (1.10s - Peak 2)
     at(() => { 
-      name.textContent = 'RAI';
-      name.className = 'show tracking';
+      sys.textContent = 'IDENTITY VERIFIED';
+      line.className = 'draw fade'; 
     }, 1100);
     
+    // VEDANTH.OS COMES ONLINE (2.10s - Peak 3)
     at(() => { 
-      name.textContent = 'VEDANTH.OS';
+      sys.style.opacity = '0';
+      name.textContent = 'VEDANTH.OS ONLINE';
       name.className = 'final';
       bg.className = 'on';
       if (sound.enabled) sound.initCtx();
     }, 2100);
     
-    at(finish, 3800);
+    // ENTER VEDANTH.OS (3.5s)
+    at(() => {
+      name.style.transform = 'translate(-50%, -120%) scale(1)'; // Move title up slightly
+      name.style.color = 'var(--dim)';
+      name.style.fontSize = 'clamp(1rem,3vw,1.4rem)';
+      name.style.letterSpacing = '.8em';
+      enter.style.display = 'block'; // Show the primary CTA
+      $('#enter-btn').onclick = finish; // Now requires explicit click to enter
+    }, 3800);
   };
 
-  sys.textContent = 'SYSTEM INITIALIZING...';
-  sys.style.opacity = '1';
-
   if (!sound.enabled) {
-     at(playCinematic, 600);
+     at(playCinematic, 100);
   } else {
      audio = new Audio(asset('assets/intro.mp3'));
      const playPromise = audio.play();
@@ -96,7 +101,7 @@ export function runBoot(onDone: () => void): void {
         playPromise.then(() => {
            playCinematic();
         }).catch(() => {
-           // Autoplay blocked
+           // Autoplay blocked - fall back immediately to the entry button
            enter.style.display = 'block';
            $('#enter-btn').onclick = () => {
               enter.style.display = 'none';
