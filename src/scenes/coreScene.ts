@@ -9,21 +9,14 @@ export function triggerWormhole() {
 
 let jumpPhase = 0;
 let jumpTimer = 0;
-function getBaseZ() {
-  const w = window.innerWidth;
-  if (w < 400) return 10.0;
-  if (w < 640) return 8.5;
-  if (w < 768) return 6.5;
-  return 4.6;
-}
-export let targetZ = getBaseZ();
+export let targetZ = 4.6;
 export function triggerProjectJump() {
   jumpPhase = 1;
   jumpTimer = 0;
-  targetZ = 4.6; // Keep 4.6 for the jump cinematic specifically
+  targetZ = 4.6;
 }
 export function resetZoom() {
-  targetZ = getBaseZ();
+  targetZ = 4.6;
 }
 let scanTimer = 0;
 export function triggerSystemScan() {
@@ -46,14 +39,11 @@ export function initCore(canvas: HTMLCanvasElement): void {
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2.5));
   const scene = new Scene();
   const camera = new PerspectiveCamera(46, 1, 0.1, 100);
-  camera.position.z = getBaseZ();  // Closer on desktop, further on mobile
+  camera.position.z = 4.6;  // Closer = more 3D presence and less depth-flatness
   const resize = () => {
     renderer.setSize(innerWidth, innerHeight, false);
     camera.aspect = innerWidth / innerHeight;
     camera.updateProjectionMatrix();
-    if (targetZ < 11 && jumpPhase === 0) {
-       targetZ = getBaseZ();
-    }
   };
   resize();
   addEventListener('resize', resize);
