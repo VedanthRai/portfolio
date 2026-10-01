@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Vedanth Rai — AI, ML, multi-agent systems, and software engineering portfolio. Interactive 3D operating-system interface." />
+  <meta name="author" content="Vedanth Rai" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VEDANTH.OS — Vedanth Rai" />
+  <meta property="og:description" content="AI, ML, multi-agent systems, and software engineering portfolio. Interactive 3D operating-system interface." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="VEDANTH.OS — Vedanth Rai" />
+  <meta name="twitter:description" content="AI, ML, multi-agent systems, and software engineering portfolio." />
+
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <title>VEDANTH.OS — Vedanth Rai</title>
+</head>
+<body>
+  <a class="m skiplink" href="#recruiter">Skip to recruiter view</a>
+  <div id="boot" role="status" aria-live="polite">
+    <div id="cine-sys" class="m"></div>
+    <div id="cine-line"></div>
+    <h1 id="cine-name"></h1>
+    <div id="cine-bg"></div>
+    <div id="cine-enter" style="display:none;position:absolute;z-index:60;bottom:20%">
+      <button id="enter-btn" class="m" type="button" style="padding:1rem 2rem;border:1px solid var(--line);background:rgba(0,0,0,0.8)">ENTER VEDANTH.OS</button>
+    </div>
+    <button id="skip" class="m" type="button">SKIP INTRO</button>
+  </div>
+  <canvas id="core" aria-hidden="true"></canvas>
+  <header>
+    <div class="m">VEDANTH.OS</div>
+    <nav id="nav" aria-label="Main"></nav>
+    <div>
+      <button id="mapbtn" class="m" type="button">⌘ MAP</button>
+      <button id="snd" class="m" type="button" aria-pressed="false">SOUND OFF</button>
+      <button id="recbtn" class="m" type="button">RECRUITER MODE</button>
+    </div>
+  </header>
+  <main id="stage">
+    <div id="ring"><button id="vc" class="m" type="button" aria-label="V/CORE: about me"></button></div>
+  </main>
+  <div id="who"></div>
+  <div class="ov" id="ov" role="dialog" aria-modal="true" aria-label="Section">
+    <button class="x m" id="cl" type="button">CLOSE (ESC)</button>
+    <div class="wrap" id="ovb"></div>
+  </div>
+  <div id="anomaly-popup" style="display:none;">
+    <div class="anomaly-header">⚠ ANOMALY DETECTED</div>
+    <div class="anomaly-body">
+      UNKNOWN SIGNAL<br/>
+      SOURCE: DEEP SPACE<br/>
+      DISTANCE: 14.2 AU
+    </div>
+    <a href="#anomaly" id="anomaly-btn">[INVESTIGATE]</a>
+  </div>
+  <div id="rec" aria-label="Recruiter mode"></div>
+  <div id="draco">
+    <div id="dbox" role="region" aria-label="Draco guide">
+      <div class="m" style="color:var(--ac)">DRACO · deterministic navigator, not an LLM</div>
+      <p id="dans" class="m" style="color:var(--fg)">Pick a question.</p>
+      <div id="dq"></div>
+    </div>
+    <button id="dbtn" class="m" type="button" aria-expanded="false" style="border:1px solid var(--line);padding:.4rem .8rem">DRACO</button>
+  </div>
+  <div id="radar" aria-hidden="true">
+    <div class="radar-scan"></div>
+    <div class="radar-dot" id="radar-projects" style="top:25%; left:35%;"><span class="radar-label">PROJ</span></div>
+    <div class="radar-dot" id="radar-experience" style="top:45%; left:75%;"><span class="radar-label">EXP</span></div>
+    <div class="radar-dot" id="radar-skills" style="top:75%; left:40%;"><span class="radar-label">SKILL</span></div>
+    <div class="radar-dot" id="radar-lab" style="top:60%; left:20%;"><span class="radar-label">LAB</span></div>
+    <div class="radar-dot" id="radar-about" style="top:80%; left:70%;"><span class="radar-label">ABOUT</span></div>
+    <div class="radar-dot" id="radar-contact" style="top:20%; left:70%;"><span class="radar-label">COMMS</span></div>
+  </div>
+  <noscript><p style="padding:2rem">Vedanth Rai · AI / ML / Software Engineering · vedanthrai01@gmail.com · JavaScript is required for this site.</p></noscript>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

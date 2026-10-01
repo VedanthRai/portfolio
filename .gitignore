@@ -1,0 +1,28 @@
+node_modules
+dist
+*.log
+
+# Dev scripts & screenshots
+analyze.cjs
+check-logs.cjs
+check-pixels.cjs
+check-state.cjs
+take-screenshot*.cjs
+screenshots/
+screenshot.png
+PROJECT_DOSSIER/
+
+# Duplicate assets (originals in public/assets/)
+/intro.mp3
+/VedanthRai_Resume.pdf
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
