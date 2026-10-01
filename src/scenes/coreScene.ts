@@ -199,7 +199,9 @@ export function initCore(canvas: HTMLCanvasElement): void {
     });
   };
 
-  if (localStorage.getItem('vedanthos_anomaly_triggered') === 'true') {
+  let isAnomalyTriggered = false;
+  
+  if (isAnomalyTriggered) {
     applyRedAlert();
   }
 
@@ -236,8 +238,8 @@ export function initCore(canvas: HTMLCanvasElement): void {
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObject(bigRocket, true);
     if (intersects.length > 0) {
-      if (!localStorage.getItem('vedanthos_anomaly_triggered')) {
-        localStorage.setItem('vedanthos_anomaly_triggered', 'true');
+      if (!isAnomalyTriggered) {
+        isAnomalyTriggered = true;
         applyRedAlert();
         sound.beep(240, 0.3);
         sound.beep(480, 0.4);
@@ -264,7 +266,7 @@ export function initCore(canvas: HTMLCanvasElement): void {
           (inner.material as MeshBasicMaterial).color.setHex(0x0088cc);
         } else if (scanTimer > 0) {
           scanTimer = 0;
-          if (localStorage.getItem('vedanthos_anomaly_triggered') === 'true') {
+          if (isAnomalyTriggered) {
             applyRedAlert();
           } else {
             (core.material as MeshBasicMaterial).color.setHex(0x8ccbff);
